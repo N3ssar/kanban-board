@@ -8,7 +8,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   isDisabled?: boolean;
 }
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: ReactNode;
+  label?: ReactNode;
   error?: string;
   placeholder?: string;
   className?: string;
@@ -28,4 +28,13 @@ type DropdownItem = {
 export interface DropdownProps {
   items: DropdownItem[];
   trigger: ReactNode;
+}
+
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  description?: string;
+  children: ReactNode;
+  className?: string;
 }

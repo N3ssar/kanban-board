@@ -8,10 +8,13 @@ import {
 import type { RootState } from "./store/store";
 import Dropdown from "./components/common/DropDown";
 import MoreIcon from "@/assets/icon-vertical-ellipsis.svg";
+import Modal from "./components/common/Modal";
+import { useState } from "react";
 function App() {
   const dispatch = useDispatch();
   const counter = useSelector((state: RootState) => state.counter.value);
   console.log(counter);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -74,6 +77,11 @@ function App() {
           <img src={MoreIcon} alt="More" className="cursor-pointer pl-20" />
         }
       />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Modal Title" description="This is a description for the modal.">
+        <p>This is the content of the modal.</p>
+        <Button onClick={() => setIsModalOpen(false)} children={"Close"} variant="secondary" className="mt-4" />
+      </Modal>
+      <Button onClick={() => setIsModalOpen(true)} children={"Open Modal"} className="mt-4" />
     </>
   );
 }
